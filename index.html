@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tat tercihlerinize göre size en uygun kahveyi öneren akıllı kahve seçici. 20+ kahve çeşidi, detaylı bilgiler ve interaktif lezzet çarkı.">
+    <title>Kahve Keşfi — Tatlarına Göre Kahve Öneri Sistemi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Coffee Beans Background -->
+    <div class="floating-beans" aria-hidden="true">
+        <span class="bean bean-1">☕</span>
+        <span class="bean bean-2">☕</span>
+        <span class="bean bean-3">☕</span>
+        <span class="bean bean-4">☕</span>
+        <span class="bean bean-5">☕</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">Kahve <em>Keşfi</em></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active">Ana Sayfa</a></li>
+                <li><a href="#taste-selector" class="nav-link">Tat Seçici</a></li>
+                <li><a href="#recommendations" class="nav-link">Öneriler</a></li>
+                <li><a href="#flavor-wheel" class="nav-link">Lezzet Çarkı</a></li>
+                <li><a href="#coffee-guide" class="nav-link">Kahve Rehberi</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menüyü Aç/Kapa">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>☕</span> Yapay Zekâ Destekli Kahve Öneri Sistemi
+            </div>
+            <h1 class="hero-title">
+                Damak Tadınıza <br>
+                <span class="gradient-text">Mükemmel Kahveyi</span> <br>
+                Keşfedin
+            </h1>
+            <p class="hero-subtitle">
+                Tat tercihlerinizi belirleyin, 20'den fazla özenle seçilmiş kahve çeşidi arasından 
+                size en uygun olanını bulalım. Her yudumda mükemmel bir deneyim yaşayın.
+            </p>
+            <div class="hero-buttons">
+                <a href="#taste-selector" class="btn btn-primary" id="startBtn">
+                    <span>Kahvemi Bul</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#coffee-guide" class="btn btn-secondary">
+                    <span>Kahve Rehberi</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="24">0</span>
+                    <span class="stat-label">Kahve Çeşidi</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-label">Tat Kriteri</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="100">0</span>
+                    <span class="stat-label">% Kişiselleştirilmiş</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="coffee-cup-3d">
+                <div class="cup-body">
+                    <div class="cup-steam">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Taste Selector Section -->
+    <section class="taste-selector" id="taste-selector">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tat Profili</span>
+                <h2 class="section-title">Damak Tadınızı <span class="gradient-text">Tanımlayın</span></h2>
+                <p class="section-desc">Aşağıdaki slider'ları kullanarak tat tercihlerinizi belirleyin. Sistem sizin için en uygun kahveleri otomatik olarak önerecek.</p>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="presets-container">
+                <h3 class="presets-title">⚡ Hızlı Profiller</h3>
+                <div class="presets-grid">
+                    <button class="preset-btn" data-preset="sweet-lover" id="presetSweet">
+                        <span class="preset-icon">🍫</span>
+                        <span class="preset-name">Tatlı Sever</span>
+                    </button>
+                    <button class="preset-btn" data-preset="strong" id="presetStrong">
+                        <span class="preset-icon">💪</span>
+                        <span class="preset-name">Sert Kahveci</span>
+                    </button>
+                    <button class="preset-btn" data-preset="fruity" id="presetFruity">
+                        <span class="preset-icon">🍓</span>
+                        <span class="preset-name">Meyvemsi</span>
+                    </button>
+                    <button class="preset-btn" data-preset="classic" id="presetClassic">
+                        <span class="preset-icon">☕</span>
+                        <span class="preset-name">Klasik</span>
+                    </button>
+                    <button class="preset-btn" data-preset="milky" id="presetMilky">
+                        <span class="preset-icon">🥛</span>
+                        <span class="preset-name">Sütlü</span>
+                    </button>
+                    <button class="preset-btn" data-preset="adventurous" id="presetAdventurous">
+                        <span class="preset-icon">🌍</span>
+                        <span class="preset-name">Maceracı</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sliders -->
+            <div class="sliders-container" id="slidersContainer">
+                <div class="slider-group" data-taste="sweetness">
+                    <div class="slider-header">
+                        <span class="slider-icon">🍯</span>
+                        <label class="slider-label">Tatlılık</label>
+                        <span class="slider-value" id="sweetnessValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="sweetness">
+                    <div class="slider-range"><span>Az Tatlı</span><span>Çok Tatlı</span></div>
+                </div>
+                <div class="slider-group" data-taste="bitterness">
+                    <div class="slider-header">
+                        <span class="slider-icon">🫒</span>
+                        <label class="slider-label">Acılık</label>
+                        <span class="slider-value" id="bitternessValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="bitterness">
+                    <div class="slider-range"><span>Hafif</span><span>Çok Acı</span></div>
+                </div>
+                <div class="slider-group" data-taste="intensity">
+                    <div class="slider-header">
+                        <span class="slider-icon">⚡</span>
+                        <label class="slider-label">Yoğunluk</label>
+                        <span class="slider-value" id="intensityValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="intensity">
+                    <div class="slider-range"><span>Hafif</span><span>Çok Yoğun</span></div>
+                </div>
+                <div class="slider-group" data-taste="acidity">
+                    <div class="slider-header">
+                        <span class="slider-icon">🍋</span>
+                        <label class="slider-label">Asidite</label>
+                        <span class="slider-value" id="acidityValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="acidity">
+                    <div class="slider-range"><span>Düşük</span><span>Yüksek</span></div>
+                </div>
+                <div class="slider-group" data-taste="milkiness">
+                    <div class="slider-header">
+                        <span class="slider-icon">🥛</span>
+                        <label class="slider-label">Sütlülük</label>
+                        <span class="slider-value" id="milkinessValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="milkiness">
+                    <div class="slider-range"><span>Sütsüz</span><span>Bol Süt</span></div>
+                </div>
+                <div class="slider-group" data-taste="chocolate">
+                    <div class="slider-header">
+                        <span class="slider-icon">🍫</span>
+                        <label class="slider-label">Çikolata</label>
+                        <span class="slider-value" id="chocolateValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="chocolate">
+                    <div class="slider-range"><span>Yok</span><span>Bol Çikolata</span></div>
+                </div>
+                <div class="slider-group" data-taste="fruity">
+                    <div class="slider-header">
+                        <span class="slider-icon">🍒</span>
+                        <label class="slider-label">Meyvemsilik</label>
+                        <span class="slider-value" id="fruityValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="fruity">
+                    <div class="slider-range"><span>Yok</span><span>Çok Meyveli</span></div>
+                </div>
+                <div class="slider-group" data-taste="nutty">
+                    <div class="slider-header">
+                        <span class="slider-icon">🥜</span>
+                        <label class="slider-label">Fındıksılık</label>
+                        <span class="slider-value" id="nuttyValue">5</span>
+                    </div>
+                    <input type="range" min="0" max="10" value="5" class="taste-slider" id="nutty">
+                    <div class="slider-range"><span>Yok</span><span>Bol Fındıksı</span></div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-container">
+                <div class="filter-group">
+                    <span class="filter-label">Sıcaklık:</span>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="temp" data-value="all" id="filterTempAll">Hepsi</button>
+                        <button class="filter-btn" data-filter="temp" data-value="hot" id="filterTempHot">🔥 Sıcak</button>
+                        <button class="filter-btn" data-filter="temp" data-value="cold" id="filterTempCold">❄️ Soğuk</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Kafein:</span>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="caffeine" data-value="all" id="filterCafAll">Hepsi</button>
+                        <button class="filter-btn" data-filter="caffeine" data-value="high" id="filterCafHigh">Yüksek</button>
+                        <button class="filter-btn" data-filter="caffeine" data-value="medium" id="filterCafMed">Orta</button>
+                        <button class="filter-btn" data-filter="caffeine" data-value="low" id="filterCafLow">Düşük</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="findCoffeeBtn">
+                <span>☕ Kahvemi Öner</span>
+                <div class="btn-shine"></div>
+            </button>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="recommendations" id="recommendations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sonuçlar</span>
+                <h2 class="section-title">Size Özel <span class="gradient-text">Kahve Önerileri</span></h2>
+                <p class="section-desc" id="recommendationDesc">Tat tercihlerinize göre en uygun kahveleri sıraladık.</p>
+            </div>
+            <div class="recommendation-cards" id="recommendationCards">
+                <!-- Dynamically filled by JS -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">☕</div>
+                    <h3>Henüz bir öneri yok</h3>
+                    <p>Yukarıdaki tat seçiciyi kullanarak tercihlerinizi belirleyin ve "Kahvemi Öner" butonuna tıklayın.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flavor Wheel Section -->
+    <section class="flavor-wheel-section" id="flavor-wheel">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">İnfografik</span>
+                <h2 class="section-title">Kahve <span class="gradient-text">Lezzet Çarkı</span></h2>
+                <p class="section-desc">SCA (Specialty Coffee Association) lezzet çarkından ilham alınarak hazırlanmış interaktif kahve tat haritası.</p>
+            </div>
+            <div class="wheel-container">
+                <canvas id="flavorWheelCanvas" width="600" height="600"></canvas>
+                <div class="wheel-info" id="wheelInfo">
+                    <div class="wheel-info-icon">🎯</div>
+                    <h3 id="wheelInfoTitle">Bir lezzet kategorisine tıklayın</h3>
+                    <p id="wheelInfoDesc">Çarkın üzerine geldiğinizde o lezzet kategorisindeki kahveler ve detaylı bilgiler gösterilecektir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffee Guide Section -->
+    <section class="coffee-guide" id="coffee-guide">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Bilgi Bankası</span>
+                <h2 class="section-title">Kahve <span class="gradient-text">Ansiklopedisi</span></h2>
+                <p class="section-desc">Tüm kahve çeşitleri hakkında detaylı bilgiler, hazırlanış yöntemleri ve ilginç gerçekler.</p>
+            </div>
+            <div class="guide-grid" id="guideGrid">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffee Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="coffeeModal">
+            <button class="modal-close" id="modalClose" aria-label="Kapat">✕</button>
+            <div class="modal-header" id="modalHeader">
+                <div class="modal-icon" id="modalIcon">☕</div>
+                <div>
+                    <h2 class="modal-title" id="modalTitle">Kahve Adı</h2>
+                    <span class="modal-origin" id="modalOrigin">Menşe</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📝 Açıklama</h3>
+                    <p id="modalDescription">Kahve açıklaması burada görünecek.</p>
+                </div>
+                <div class="modal-section">
+                    <h3>🧪 Tat Profili</h3>
+                    <div class="modal-taste-bars" id="modalTasteBars">
+                        <!-- Dynamically filled -->
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>📋 Hazırlanış</h3>
+                    <p id="modalPreparation">Hazırlanış bilgisi.</p>
+                </div>
+                <div class="modal-section modal-info-grid">
+                    <div class="modal-info-card">
+                        <span class="info-label">☕ Kafein</span>
+                        <span class="info-value" id="modalCaffeine">-</span>
+                    </div>
+                    <div class="modal-info-card">
+                        <span class="info-label">🔥 Kalori</span>
+                        <span class="info-value" id="modalCalories">-</span>
+                    </div>
+                    <div class="modal-info-card">
+                        <span class="info-label">🌡️ Servis</span>
+                        <span class="info-value" id="modalServing">-</span>
+                    </div>
+                    <div class="modal-info-card">
+                        <span class="info-label">🥛 İçerik</span>
+                        <span class="info-value" id="modalIngredients">-</span>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>💡 İlginç Bilgiler</h3>
+                    <ul class="modal-facts" id="modalFacts">
+                        <!-- Dynamically filled -->
+                    </ul>
+                </div>
+                <div class="modal-match" id="modalMatch">
+                    <div class="match-circle">
+                        <svg viewBox="0 0 36 36">
+                            <path class="match-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="match-fill" id="matchFill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <span class="match-percent" id="matchPercent">0%</span>
+                    </div>
+                    <span class="match-label">Uyum Oranı</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">☕</span>
+                    <span class="logo-text">Kahve <em>Keşfi</em></span>
+                    <p>Tat tercihlerinize göre mükemmel kahvenizi keşfedin.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Keşfet</h4>
+                    <ul>
+                        <li><a href="#taste-selector">Tat Seçici</a></li>
+                        <li><a href="#recommendations">Öneriler</a></li>
+                        <li><a href="#flavor-wheel">Lezzet Çarkı</a></li>
+                        <li><a href="#coffee-guide">Kahve Rehberi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h4>Bilgi</h4>
+                    <p>Bu site, kahve severlere tat tercihlerine dayalı kişiselleştirilmiş öneriler sunan interaktif bir platformdur.</p>
+                    <p>SCA (Specialty Coffee Association) verileri referans alınmıştır.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kahve Keşfi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
